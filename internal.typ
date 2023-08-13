@@ -23,6 +23,38 @@
 }
 
 /*
+ * chic-layout
+ *
+ * Generates the proper layout for the header and
+ * footer sides.
+ *
+ * Parameters:
+ * - left-side: Content that goes at the left side
+ * - center-side: Content that goes at the center
+ * - right-side: Content that goes at the right side
+ */
+#let chic-layout(left-side, center-side, right-side) = {
+  let sides = (left-side, center-side, right-side)
+  let not-none-sides = sides.filter(side => {
+    if side != none {
+      return true
+    } else {
+      return false
+    }
+  })
+
+  // If only is one side, allow it to use all space
+  if not-none-sides.len() == 1 {
+    return sides.map(side => {
+      if side == none { 0fr } else { 1fr }
+    })
+  // Otherwise, give the same width to all sides
+  } else {
+    return (1fr, 1fr, 1fr)
+  }
+}
+
+/*
  * chic-grid
  *
  * Creates a grid element with the corresponding
@@ -36,9 +68,7 @@
 #let chic-grid(left-side, center-side, right-side) = block(
   spacing: 0pt,
   grid(
-    columns: (left-side, center-side, right-side).map(side => {
-      if side == none { 0fr } else { 1fr }
-    }),
+    columns: chic-layout(left-side, center-side, right-side),
     column-gutter: 11pt,
     align(left, left-side),
     align(center, center-side),
