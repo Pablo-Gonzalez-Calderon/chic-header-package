@@ -40,9 +40,9 @@
       if side == none { 0fr } else { 1fr }
     }),
     column-gutter: 11pt,
-    align(left, left-side),
-    align(center, center-side),
-    align(right, right-side)
+    align(horizon+left, left-side),
+    align(horizon+center, center-side),
+    align(horizon+right, right-side)
   )
 )
 
