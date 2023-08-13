@@ -21,7 +21,7 @@
  * - center-side: Content that goes at the center
  * - right-side: Content that goes at the right side
  */
-#let chic-header(left-side: none, center-side: none, right-side: none) = {
+#let chic-header(left-side: [], center-side: [], right-side: []) = {
   return (
     chic-type: "header",
     value:[
