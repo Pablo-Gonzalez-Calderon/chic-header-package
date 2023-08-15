@@ -65,14 +65,14 @@
  * - center-side: Content that goes at the center
  * - right-side: Content that goes at the right side
  */
-#let chic-grid(left-side, center-side, right-side) = block(
+#let chic-grid(v-center: false, left-side, center-side, right-side) = block(
   spacing: 0pt,
   grid(
     columns: chic-layout(left-side, center-side, right-side),
     column-gutter: 11pt,
-    align(left, left-side),
-    align(center, center-side),
-    align(right, right-side)
+    align(if v-center {horizon + left} else {left}, left-side),
+    align(if v-center {horizon + center} else {center}, center-side),
+    align(if v-center {horizon + right} else {right}, right-side)
   )
 )
 

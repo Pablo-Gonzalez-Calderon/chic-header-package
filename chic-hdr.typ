@@ -17,15 +17,16 @@
  * Sets the header content
  *
  * Parameters:
+ * - v-center: Whether to vertically align the header content, or not
  * - left-side: Content that goes at the left side
  * - center-side: Content that goes at the center
  * - right-side: Content that goes at the right side
  */
-#let chic-header(left-side: none, center-side: none, right-side: none) = {
+#let chic-header(v-center: false, left-side: none, center-side: none, right-side: none) = {
   return (
     chic-type: "header",
     value:[
-      #chic-grid(left-side, center-side, right-side)
+      #chic-grid(v-center: v-center, left-side, center-side, right-side)
     ]
   )
 }
@@ -36,15 +37,16 @@
  * Sets the footer content
  *
  * Parameters:
+ * - v-center: Whether to vertically align the header content, or not
  * - left-side: Content that goes at the left side
  * - center-side: Content that goes at the center
  * - right-side: Content that goes at the right side
  */
-#let chic-footer(left-side: none, center-side: none, right-side: none) = {
+#let chic-footer(v-center: false, left-side: none, center-side: none, right-side: none) = {
   return (
     chic-type: "footer",
     value:[
-      #chic-grid(left-side, center-side, right-side)
+      #chic-grid(v-center: v-center, left-side, center-side, right-side)
     ]
   )
 }
