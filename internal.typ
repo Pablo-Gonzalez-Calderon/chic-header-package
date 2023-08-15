@@ -48,6 +48,9 @@
     return sides.map(side => {
       if side == none { 0fr } else { 1fr }
     })
+  // If only center is none, divide the width into two
+  } else if sides.at(1) == none {
+    return (1fr, 0fr, 1fr)
   // Otherwise, give the same width to all sides
   } else {
     return (1fr, 1fr, 1fr)
