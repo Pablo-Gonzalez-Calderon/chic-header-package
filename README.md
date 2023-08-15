@@ -98,5 +98,7 @@ _Footer with `chic-page-number()` at right, and a custom `chic-separator()` show
 
 ### Version 0.2.0
 
+_Thanks to Slashformotion (<https://github.com/slashformotion>) for noticing this version bugs, and suggesting a vertical alignment for headers._
+
 - Fix alignment error in `chic-header()` and `chic-footer()`
 - Add `v-center` option for `chic-header()` and `chic-footer()`
