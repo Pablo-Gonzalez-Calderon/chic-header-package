@@ -1,17 +1,53 @@
-# Chic-header (v0.1.0)
+# Chic-header (v0.2.0)
 **Chic-headers** (chic-hdr) is a Typst package for creating elegant headers and footers
 
 ## Usage
 
-To use this library through the Typst package manager (for Typst 0.6.0 or greater), write `#import "@preview/chic-hdr:0.1.0": *` at the beginning of your Typst file. Once imported, you can start using the package by writing the instruction `#show: chic.with()` and giving any of the chic functions inside the parenthesis `()`.
+To use this library through the Typst package manager (for Typst 0.6.0 or greater), write `#import "@preview/chic-hdr:0.2.0": *` at the beginning of your Typst file. Once imported, you can start using the package by writing the instruction `#show: chic.with()` and giving any of the chic functions inside the parenthesis `()`.
+
+For example, the code below...
+
+```java
+#import "chic-hdr.typ": *
+
+#set page(paper: "a7")
+
+#show: chic.with(
+  chic-footer(
+    left-side: strong(
+        link("mailto:admin@chic.hdr", "admin@chic.hdr")
+    ),
+    right-side: chic-page-number()
+  ),
+  chic-header(
+    left-side: emph(chic-heading-name()),
+    right-side: smallcaps("Example")
+  ),
+  chic-separator(1pt),
+  chic-offset(7pt),
+  chic-height(1.5cm)
+)
+
+= Introduction
+#lorem(30)
+
+== Details
+#lorem(70)
+```
+
+...will look like this:
+
+<h3 align="center">
+  <img alt="Usage example" src="assets/usage.png" style="max-width: 100%; padding: 10px 10px; background-color: #E4E5EA; box-shadow: 1pt 1pt 10pt 0pt #AAAAAA; border-radius: 4pt">
+</h3>
 
 ## Reference
 
 _Note: For a detailed explanation of the functions and parameters, see Chic-header's Manual.pdf._
 
 While using `#show: chic.with()`, you can give the following parameters inside the parenthesis:
-- `width`: Indicates the with of headers and footers in all the document (deafult is `100%`).
-- `skip`: Which pages must be skipped for setting its header and footer. Other porperties changed with `chic-height()` or `chic-offset()` are preserved. (default is `()`).
+- `width`: Indicates the with of headers and footers in all the document (default is `100%`).
+- `skip`: Which pages must be skipped for setting its header and footer. Other properties changed with `chic-height()` or `chic-offset()` are preserved. (default is `()`).
 - `even`: Header and footer for even pages. Here, only `chic-header()`, `chic-footer()` and `chic-separator()` functions will take effect. Other functions must be given as an argument of `chic()`.
 - `odd`: Sets the header and footer for odd pages. Here, only `chic-header()`, `chic-footer()` and `chic-separator()` functions will take effect. Other functions must be given as an argument of `chic()`.
 - `..functions()`: These are a variable number of arguments that corresponds to Chic-header’s style functions.
@@ -28,7 +64,7 @@ While using `#show: chic.with()`, you can give the following parameters inside t
     - `right-side`: Content displayed in the right side of the footer (default is `none`).
 3. `chic-separator()` - Sets the separator for either the header, the footer or both.
     - `on`: Where to apply the separator. It can be `"header"`, `"footer"` or `"both"` (default is `"both"`).
-    - `gutter`: How much spacing insert arround the separator (default is `0.65em`).
+    - `gutter`: How much spacing insert around the separator (default is `0.65em`).
     - (unnamed): A length for a `line()`, a stroke for a `line()`, or a custom content element.
 4. `chic-height()` - Sets the height of either the header, the footer or both.
     - `on`: Where to change the height. It can be `"header"`, `"footer"` or `"both"` (default is `"both"`).
@@ -59,3 +95,8 @@ _Footer with `chic-page-number()` at right, and a custom `chic-separator()` show
 
 - Initial release
 - Implemented `chic-header()`, `chic-footer()`, `chic-separator()`, `chic-height()`, `chic-offset()`, `chic-page-number()`, and `chic-heading-name()` functions
+
+### Version 0.2.0
+
+- Fix alignment error in `chic-header()` and `chic-footer()`
+- Add `v-center` option for `chic-header()` and `chic-footer()`
