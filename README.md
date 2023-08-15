@@ -55,15 +55,18 @@ While using `#show: chic.with()`, you can give the following parameters inside t
 ### Functions
 
 1. `chic-header()` - Sets the header content.
+    - `v-center`: Whether to vertically align the header content, or not (default is `false`).
     - `left-side`: Content displayed in the left side of the header (default is `none`).
     - `center-side`: Content displayed in the center of the header (default is `none`).
     - `right-side`: Content displayed in the right side of the header (default is `none`).
 2. `chic-footer()` - Sets the footer content.
+    - `v-center`: Whether to vertically align the header content, or not (default is `false`).
     - `left-side`: Content displayed in the left side of the footer (default is `none`).
     - `center-side`: Content displayed in the center of the footer (default is `none`).
     - `right-side`: Content displayed in the right side of the footer (default is `none`).
 3. `chic-separator()` - Sets the separator for either the header, the footer or both.
     - `on`: Where to apply the separator. It can be `"header"`, `"footer"` or `"both"` (default is `"both"`).
+    - `outset`: Space around the separator beyond the page margins (default is `0pt`).
     - `gutter`: How much spacing insert around the separator (default is `0.65em`).
     - (unnamed): A length for a `line()`, a stroke for a `line()`, or a custom content element.
 4. `chic-height()` - Sets the height of either the header, the footer or both.
@@ -102,3 +105,4 @@ _Thanks to Slashformotion (<https://github.com/slashformotion>) for noticing thi
 
 - Fix alignment error in `chic-header()` and `chic-footer()`
 - Add `v-center` option for `chic-header()` and `chic-footer()`
+- Add `outset` option for `chic-separator()`
