@@ -52,6 +52,96 @@
 }
 
 /*
+ * chic-styled-separator
+ *
+ * Returns a styled separator for chic-separator()
+ *
+ * Parameters:
+ * - color: Separator color
+ * - style: Separator to return
+ */
+#let chic-styled-separator(color: black, style) = {
+  if style == "double-line" {
+    return block(width: 100%)[
+      #block(spacing: 0pt, line(length: 100%, stroke: color))
+      #v(2.5pt)
+      #block(spacing: 0pt, line(length: 100%, stroke: color))
+    ]
+  } else if style == "bold-center" {
+    return block(width: 100%)[
+      #line(length: 100%, stroke: color)
+      #place(
+        center,
+        dy: -1.5pt,
+        rect(
+          width: 10%,
+          height: 3pt,
+          radius: 5pt,
+          fill: color
+        )
+      )
+    ]
+  } else if style == "center-dot" {
+    return align(
+      center + horizon,
+      stack(
+        dir: ltr,
+        spacing: 3pt,
+        path(
+          fill: color,
+          stroke: color,
+          closed: true,
+          (0pt, 0pt),
+          (50% - 10pt, 1.5pt),
+          ((50% - 8pt, 0pt), (0pt, 1.5pt)),
+          (50% - 10pt, -1.5pt)
+        ),
+        circle(radius: 5pt, fill: color),
+        path(
+          fill: color,
+          stroke: color,
+          closed: true,
+          (50% - 10pt, 0pt),
+          (2pt, 1.5pt),
+          ((0pt, 0pt), (0pt, 1.5pt)),
+          (2pt, -1.5pt)
+        ),
+      )
+    )
+  } else if style == "flower-end" {
+    let branch = move(
+      dy: 3.5pt,
+      path(
+        closed: false,
+        fill: color,
+        (50% - 16pt, -1pt),
+        ((13pt, -1pt), (5pt, 0pt)),
+        ((7pt, -7pt), (0pt, 0pt), (-2pt, 2pt)),
+        ((5pt, -2pt), (-1pt, -1pt), (-3pt, 0pt)),
+        (0pt, 0pt),
+        ((5pt, 2pt), (-3pt, 0pt), (-1pt, 1pt)),
+        ((7pt, 7pt), (-2pt, -2pt), (0pt, 0pt)),
+        ((13pt, 1pt), (-5pt, 0pt)),
+        (50% - 16pt, 1pt),
+      )
+    )
+    
+    return align(
+      center + horizon,
+      stack(
+        dir: ltr,
+        spacing: 3pt,
+        branch,
+        rect(height: 2pt, width: 2pt, fill: color),
+        rect(height: 2pt, width: 16pt, fill: color),
+        rect(height: 2pt, width: 2pt, fill: color),
+        rotate(180deg, branch)
+      )
+    )
+  }
+}
+
+/*
  * chic-separator
  *
  * Sets the separator for either the header, the footer or both
