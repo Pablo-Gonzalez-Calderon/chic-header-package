@@ -1,5 +1,5 @@
 # Chic-header (v0.2.0)
-**Chic-headers** (chic-hdr) is a Typst package for creating elegant headers and footers
+**Chic-header** (chic-hdr) is a Typst package for creating elegant headers and footers
 
 ## Usage
 
@@ -69,6 +69,9 @@ While using `#show: chic.with()`, you can give the following parameters inside t
     - `outset`: Space around the separator beyond the page margins (default is `0pt`).
     - `gutter`: How much spacing insert around the separator (default is `0.65em`).
     - (unnamed): A length for a `line()`, a stroke for a `line()`, or a custom content element.
+4. `chic-styled-separator()` - Returns a pre-made custom separator for using it in `chic-separator()`
+    - `color`: Separator's color (default is `black`).
+    - (unnamed): A string indicating the separator's style. It can be `"double-line"`, `"center-dot"`, `"bold-center"`, or `"flower-end"`.
 4. `chic-height()` - Sets the height of either the header, the footer or both.
     - `on`: Where to change the height. It can be `"header"`, `"footer"` or `"both"` (default is `"both"`).
     - (unnamed): A relative length (the new height value).
@@ -106,3 +109,4 @@ _Thanks to Slashformotion (<https://github.com/slashformotion>) for noticing thi
 - Fix alignment error in `chic-header()` and `chic-footer()`
 - Add `v-center` option for `chic-header()` and `chic-footer()`
 - Add `outset` option for `chic-separator()`
+- Add `chic-styled-separator()` function
