@@ -1,14 +1,16 @@
-# Chic-header (v0.2.0)
+# Chic-header (v0.3.0)
 **Chic-header** (chic-hdr) is a Typst package for creating elegant headers and footers
 
 ## Usage
 
-To use this library through the Typst package manager (for Typst 0.6.0 or greater), write `#import "@preview/chic-hdr:0.2.0": *` at the beginning of your Typst file. Once imported, you can start using the package by writing the instruction `#show: chic.with()` and giving any of the chic functions inside the parenthesis `()`.
+To use this library through the Typst package manager (for Typst 0.6.0 or greater), write `#import "@preview/chic-hdr:0.3.0": *` at the beginning of your Typst file. Once imported, you can start using the package by writing the instruction `#show: chic.with()` and giving any of the chic functions inside the parenthesis `()`.
+
+_**Important: If you are using a custom template that also needs the `#show` instruction to be applied, prefer to use `#show: chic()` after the template's `#show`.**_
 
 For example, the code below...
 
-```java
-#import "chic-hdr.typ": *
+```js
+#import "@preview/chic-hdr:0.3.0": *
 
 #set page(paper: "a7")
 
@@ -56,11 +58,13 @@ While using `#show: chic.with()`, you can give the following parameters inside t
 
 1. `chic-header()` - Sets the header content.
     - `v-center`: Whether to vertically align the header content, or not (default is `false`).
+    - `side-width`: Custom width for the sides. It can be an 3-element-array, length or relative length (default is `none` and widths are set to ``1fr`` if a side is present).
     - `left-side`: Content displayed in the left side of the header (default is `none`).
     - `center-side`: Content displayed in the center of the header (default is `none`).
     - `right-side`: Content displayed in the right side of the header (default is `none`).
 2. `chic-footer()` - Sets the footer content.
     - `v-center`: Whether to vertically align the header content, or not (default is `false`).
+    - `side-width`: Custom width for the sides. It can be an 3-element-array, length or relative length (default is `none` and widths are set to ``1fr`` if a side is present).
     - `left-side`: Content displayed in the left side of the footer (default is `none`).
     - `center-side`: Content displayed in the center of the footer (default is `none`).
     - `right-side`: Content displayed in the right side of the footer (default is `none`).
@@ -110,3 +114,7 @@ _Thanks to Slashformotion (<https://github.com/slashformotion>) for noticing thi
 - Add `v-center` option for `chic-header()` and `chic-footer()`
 - Add `outset` option for `chic-separator()`
 - Add `chic-styled-separator()` function
+
+### Version 0.3.0
+
+- Add `side-width` option for `chic-header()` and `chic-footer()`

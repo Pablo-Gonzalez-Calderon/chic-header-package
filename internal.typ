@@ -64,14 +64,26 @@
  * format needed to be used as a header or a footer
  *
  * Parameters:
+ * - v-center: Whether to vertically align the header content, or not
+ * - side-width: Custom width for sides (can be an array or length)
  * - left-side: Content that goes at the left side
  * - center-side: Content that goes at the center
  * - right-side: Content that goes at the right side
  */
-#let chic-grid(v-center: false, left-side, center-side, right-side) = block(
+#let chic-grid(v-center: false, side-width, left-side, center-side, right-side) = block(
   spacing: 0pt,
   grid(
-    columns: chic-layout(left-side, center-side, right-side),
+    columns: if side-width == none {
+      chic-layout(left-side, center-side, right-side)
+    } else {
+      if type(side-width) in ("fraction", "relative length", "length") {
+        (side-width, side-width, side-width)
+      } else if type(side-width) == "array" and side-width.len() == 3 { // Arrays must be 3 elements long
+        side-width
+      } else { // Previus conditions weren't met
+        chic-layout(left-side, center-side, right-side)
+      }
+    },
     column-gutter: 11pt,
     align(if v-center {horizon + left} else {left}, left-side),
     align(if v-center {horizon + center} else {center}, center-side),
@@ -82,7 +94,7 @@
 /*
  * chic-generate-props
  *
- * Obtains the correct properties to apply for a 
+ * Obtains the correct properties to apply for a
  * particular type of pages (or all pages).
  *
  * Parameters:
@@ -107,7 +119,7 @@
   // Process each option and modify the properties according to them
   for option in options {
     if chic-valid-type(option) {
-      
+
       // Footer and Header
       if option.chic-type in ("header", "footer") {
         page-options.at(option.chic-type) = option.value

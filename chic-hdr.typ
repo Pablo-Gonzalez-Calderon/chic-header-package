@@ -18,15 +18,16 @@
  *
  * Parameters:
  * - v-center: Whether to vertically align the header content, or not
+ * - side-width: Custom width for sides (can be an array or length)
  * - left-side: Content that goes at the left side
  * - center-side: Content that goes at the center
  * - right-side: Content that goes at the right side
  */
-#let chic-header(v-center: false, left-side: none, center-side: none, right-side: none) = {
+#let chic-header(v-center: false, side-width: none, left-side: none, center-side: none, right-side: none) = {
   return (
     chic-type: "header",
     value:[
-      #chic-grid(v-center: v-center, left-side, center-side, right-side)
+      #chic-grid(v-center: v-center, side-width, left-side, center-side, right-side)
     ]
   )
 }
@@ -38,15 +39,16 @@
  *
  * Parameters:
  * - v-center: Whether to vertically align the header content, or not
+ * - side-width: Custom width for sides (can be an array or length)
  * - left-side: Content that goes at the left side
  * - center-side: Content that goes at the center
  * - right-side: Content that goes at the right side
  */
-#let chic-footer(v-center: false, left-side: none, center-side: none, right-side: none) = {
+#let chic-footer(v-center: false, side-width: none, left-side: none, center-side: none, right-side: none) = {
   return (
     chic-type: "footer",
     value:[
-      #chic-grid(v-center: v-center, left-side, center-side, right-side)
+      #chic-grid(v-center: v-center, side-width, left-side, center-side, right-side)
     ]
   )
 }
@@ -125,7 +127,7 @@
         (50% - 16pt, 1pt),
       )
     )
-    
+
     return align(
       center + horizon,
       stack(
@@ -307,7 +309,7 @@
       }
     })
   }
-  
+
   set page(
     ..page-options
   )
