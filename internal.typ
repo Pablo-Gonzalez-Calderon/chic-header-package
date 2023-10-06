@@ -19,7 +19,7 @@
  * - arg: Argument to check
  */
 #let chic-valid-type(arg) = {
-  return type(arg) == "dictionary" and "chic-type" in arg
+  return type(arg) == dictionary and "chic-type" in arg
 }
 
 /*
@@ -76,9 +76,9 @@
     columns: if side-width == none {
       chic-layout(left-side, center-side, right-side)
     } else {
-      if type(side-width) in ("fraction", "relative length", "length") {
+      if type(side-width) in (fraction, relative, length) {
         (side-width, side-width, side-width)
-      } else if type(side-width) == "array" and side-width.len() == 3 { // Arrays must be 3 elements long
+      } else if type(side-width) == array and side-width.len() == 3 { // Arrays must be 3 elements long
         side-width
       } else { // Previous conditions weren't met
         chic-layout(left-side, center-side, right-side)

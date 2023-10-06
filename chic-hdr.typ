@@ -151,19 +151,19 @@
  * Parameters:
  * - on: Where to apply the separator: "header", "footer" or "both"
  * - outset: Space around the separator beyond the page margins
- * - gutter: Space arround the separator
+ * - gutter: Space around the separator
  * - sep: Separator, it can be a stroke or length for creating a line,
  *        or a `line()` element created by the user
  */
 #let chic-separator(on: "both", outset: 0pt, gutter: .65em, sep) = {
   if on in ("both", "header", "footer") {
-    if type(sep) == "content" { // It's a custom separator
+    if type(sep) == content { // It's a custom separator
       return (
         chic-type: "separator",
         on: on,
         value: block(width: 100% + (2 * outset), spacing: gutter, sep)
       )
-    } else if type(sep) == "stroke" or type(sep) == "length" { // It's a line stroke
+    } else if type(sep) == stroke or type(sep) == length { // It's a line stroke
       return (
         chic-type: "separator",
         on: on,
@@ -184,7 +184,7 @@
  * - value: New height
  */
 #let chic-height(on: "both", value) = {
-  if type(value) in ("length", "ratio", "relative length") {
+  if type(value) in (length, ratio, relative) {
     return (
       chic-type: "margin",
       on: on,
@@ -204,7 +204,7 @@
  * - value: New offset
  */
 #let chic-offset(on: "both", value) = {
-  if type(value) in ("length", "ratio", "relative length") {
+  if type(value) in (length, ratio, relative) {
     return (
       chic-type: "offset",
       on: on,
@@ -227,12 +227,72 @@
 /*
  * chic-heading-name
  *
- * Returns the previous heading name. If there’s no previous
- * headings, it returns the next heading name. Finally, if
- * there’s no headings ahead, it returns nothing.
+ * Returns the next heading name in the `dir` direction. The
+ * heading must has a lower or equal level than `level`. If
+ * there're no more headings in that direction, and `fill` is
+ * ``true``, then headings are seek in the other direction.
+ *
+ * Parameters:
+ * - dir: Direction for searching the next heading: "next" (get
+ *        the next heading from the current page) or "prev" (get
+ *        the previous heading from the current page).
+ * - fill: If there's no headings in the `dir` direction, try to
+ *         get a heading in the opposite direction.
+ * - level: Up to what level of headings should this function
+ *          search
  */
-#let chic-heading-name() = {
-  return locate(loc => {
+#let chic-heading-name(dir: "next", fill: false, level: 2) = locate(loc => {
+  let headings = array(()) // Array for storing headings
+
+  if dir == "next" {
+    headings = query(
+      selector(heading).after(loc),
+      loc
+    ).rev()
+  } else if dir == "prev" {
+    headings = query(
+      selector(heading).before(loc),
+      loc
+    )
+  }
+
+  // If no headings were fetch, try the other direction if `fill` is true
+  if headings.len() == 0 and fill {
+    if dir == "next" {
+      headings = query(
+        selector(heading).before(loc),
+        loc
+      )
+    } else if dir == "prev" {
+      headings = query(
+        selector(heading).after(loc),
+        loc
+      ).rev()
+    }
+  }
+
+  let found = false
+  let return-heading = none
+  while not found and headings.len() > 0 {
+    // Fetch the next heading in the array
+    return-heading = headings.pop()
+
+    // Check the level of the fetched heading
+    if return-heading.level <= level {
+      found = true
+    }
+  }
+
+  if found {
+    return return-heading.body
+  } else {
+    return
+  }
+})
+
+
+#{
+  locate(loc => {
     // Search for previous headings
     let headings = query(selector(heading).before(loc), loc)
 
@@ -267,7 +327,7 @@
  *            general header and footer options for all pages.
  */
 #let chic(width: 100%, skip: (), even: none, odd: none, ..options) = {
-  // both-options is used in case `even` is sepcified or `odd` is specified, but not both, or when none of them are specified
+  // both-options is used in case `even` is specified or `odd` is specified, but not both, or when none of them are specified
   let both-options = chic-generate-props(width, options.pos())
   let even-options = none
   let odd-options = none
