@@ -290,28 +290,6 @@
   }
 })
 
-
-#{
-  locate(loc => {
-    // Search for previous headings
-    let headings = query(selector(heading).before(loc), loc)
-
-    if headings != () {
-      return headings.last().body
-    } else {
-      // Search for next headings
-      let headings = query(selector(heading).after(loc), loc)
-
-      if headings != () {
-        return headings.first().body
-      } else {
-        // There's no headings
-        return
-      }
-    }
-  })
-}
-
 /*
  * chic
  *
