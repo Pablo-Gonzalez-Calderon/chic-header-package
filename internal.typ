@@ -80,7 +80,7 @@
         (side-width, side-width, side-width)
       } else if type(side-width) == "array" and side-width.len() == 3 { // Arrays must be 3 elements long
         side-width
-      } else { // Previus conditions weren't met
+      } else { // Previous conditions weren't met
         chic-layout(left-side, center-side, right-side)
       }
     },
