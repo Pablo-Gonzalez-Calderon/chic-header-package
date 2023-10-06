@@ -83,7 +83,7 @@ While using `#show: chic.with()`, you can give the following parameters inside t
     - `on`: Where to change the offset It can be `"header"`, `"footer"` or `"both"` (default is `"both`).
     - (unnamed): A relative length (the new offset value).
 6. `chic-page-number()` - Returns the current page number. Useful for header and footer `sides`. It doesn’t take any parameters.
-7. `chic-heading-name()` - Returns the next heading name in the `dir` direction. The heading must have a lower or equal level than `level`. If there're no more headings in that direction, and `fill` is ``true``, then headings are seek in the other direction.
+7. `chic-heading-name()` - Returns the next heading name in the `dir` direction. The heading must have a lower or equal level than `level`. If there're no more headings in that direction, and `fill` is ``true``, then headings are sought in the other direction.
     - `dir`: Direction for searching the next heading: ``"next"`` (from the current page, get the next heading) or ``"prev"`` (from the current page, get the previous heading). Default is `"next"`.
     - `fill`: If there's no more headings in the `dir` direction, indicates whether to try to get a heading in the opposite direction (default is ``false``).
     - `level`: Up to what level of headings should this function search (default is ``2``).
