@@ -49,7 +49,7 @@ _Note: For a detailed explanation of the functions and parameters, see Chic-head
 
 While using `#show: chic.with()`, you can give the following parameters inside the parenthesis:
 - `width`: Indicates the with of headers and footers in all the document (default is `100%`).
-- `skip`: Which pages must be skipped for setting its header and footer. Other properties changed with `chic-height()` or `chic-offset()` are preserved. (default is `()`).
+- `skip`: Which pages must be skipped for setting its header and footer. Other properties changed with `chic-height()` or `chic-offset()` are preserved. Giving a negative index causes a skip of the last pages using last page as index -1(default is `()`).
 - `even`: Header and footer for even pages. Here, only `chic-header()`, `chic-footer()` and `chic-separator()` functions will take effect. Other functions must be given as an argument of `chic()`.
 - `odd`: Sets the header and footer for odd pages. Here, only `chic-header()`, `chic-footer()` and `chic-separator()` functions will take effect. Other functions must be given as an argument of `chic()`.
 - `..functions()`: These are a variable number of arguments that corresponds to Chic-header’s style functions.
@@ -87,6 +87,7 @@ While using `#show: chic.with()`, you can give the following parameters inside t
     - `dir`: Direction for searching the next heading: ``"next"`` (from the current page, get the next heading) or ``"prev"`` (from the current page, get the previous heading). Default is `"next"`.
     - `fill`: If there's no more headings in the `dir` direction, indicates whether to try to get a heading in the opposite direction (default is ``false``).
     - `level`: Up to what level of headings should this function search (default is ``2``).
+    - ``numbered``: Whether to show or not the numbering of the headings (default is `true`).
 
 ## Gallery
 
@@ -122,7 +123,10 @@ _Thanks to Slashformotion (<https://github.com/slashformotion>) for noticing thi
 
 - Add `side-width` option for `chic-header()` and `chic-footer()`
 
-### Version 0.3.1
+### Version 0.4.0
+
+_Thanks to David (<https://github.com/davidleejy>) for being interested in the package and giving feedback and ideas for new parameters_
 
 - Update ``type()`` conditionals to met Typst 0.8.0 standards
-- Add `dir`, `fill` and `level` parameters to ``chic-heading-name()``
+- Add `dir`, `fill`, `level` and `numbered` parameters to ``chic-heading-name()``
+- Allow negative indexes for skipping final pages while using `skip`
