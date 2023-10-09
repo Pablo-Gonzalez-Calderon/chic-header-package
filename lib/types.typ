@@ -2,7 +2,7 @@
  * Chic-header - A package for Typst
  * Pablo González Calderón (c) 2023
  *
- * props.typ -- The package's file for checking if a
+ * types.typ -- The package's file for checking if a
  * dictionary is a valid chic-hdr package element.
  *
  * This file is under the MIT license. For more

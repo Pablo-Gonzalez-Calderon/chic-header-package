@@ -2,8 +2,8 @@
  * Chic-header - A package for Typst
  * Pablo González Calderón (c) 2023
  *
- * props.typ -- The package's file for handling header and footer
- * layouts properly
+ * layout.typ -- The package's file for handling header and
+ * footer layouts properly
  *
  * This file is under the MIT license. For more
  * information see LICENSE on the package's main folder.
