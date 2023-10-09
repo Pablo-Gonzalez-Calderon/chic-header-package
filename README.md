@@ -130,3 +130,4 @@ _Thanks to David (<https://github.com/davidleejy>) for being interested in the p
 - Update ``type()`` conditionals to met Typst 0.8.0 standards
 - Add `dir`, `fill`, `level` and `numbered` parameters to ``chic-heading-name()``
 - Allow negative indexes for skipping final pages while using `skip`
+- Handle a PEBCAK while using ``skip`` option and the user gives an integer enclosed with parenthesis instead of a correct array type

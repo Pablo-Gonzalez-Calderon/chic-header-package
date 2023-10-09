@@ -49,6 +49,13 @@
     odd-options = chic-generate-props(width, odd)
   }
 
+  // Sometimes users give an integer value inside parenthesis
+  // instead of an array. So, handle this cases to avoid unwanted
+  // user reports of bugs/errors in the package
+  if type(skip) == int {
+    skip = array((skip,))
+  }
+
   // Load header and footer
   for option in ("header", "footer") {
     page-options.at(option) = locate(loc => {
