@@ -1,4 +1,4 @@
-# Chic-header (v0.4.0) -- In development
+# Chic-header (v0.4.0)
 **Chic-header** (chic-hdr) is a Typst package for creating elegant headers and footers
 
 ## Usage
@@ -22,7 +22,7 @@ For example, the code below...
     right-side: chic-page-number()
   ),
   chic-header(
-    left-side: emph(chic-heading-name()),
+    left-side: emph(chic-heading-name(fill: true)),
     right-side: smallcaps("Example")
   ),
   chic-separator(1pt),
@@ -87,7 +87,6 @@ While using `#show: chic.with()`, you can give the following parameters inside t
     - `dir`: Direction for searching the next heading: ``"next"`` (from the current page, get the next heading) or ``"prev"`` (from the current page, get the previous heading). Default is `"next"`.
     - `fill`: If there's no more headings in the `dir` direction, indicates whether to try to get a heading in the opposite direction (default is ``false``).
     - `level`: Up to what level of headings should this function search (default is ``2``).
-    - ``numbered``: Whether to show or not the numbering of the headings (default is `true`).
 
 ## Gallery
 
@@ -128,6 +127,7 @@ _Thanks to Slashformotion (<https://github.com/slashformotion>) for noticing thi
 _Thanks to David (<https://github.com/davidleejy>) for being interested in the package and giving feedback and ideas for new parameters_
 
 - Update ``type()`` conditionals to met Typst 0.8.0 standards
-- Add `dir`, `fill`, `level` and `numbered` parameters to ``chic-heading-name()``
+- Add `dir`, `fill`, and `level`parameters to ``chic-heading-name()``
 - Allow negative indexes for skipping final pages while using `skip`
-- Handle a PEBCAK while using ``skip`` option and the user gives an integer enclosed with parenthesis instead of a correct array type
+- Include some panic alerts for types mismatch
+- Upload manual code in the package repository
