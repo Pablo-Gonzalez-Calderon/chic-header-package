@@ -301,6 +301,10 @@ Up to what level of headings should this function search.
 
 Default is #line-raw("2").
 
+#observation()[
+  Chic-hdr package also supports working with #link("https://github.com/tingerrr/hydra", "Hydra package"), so instead of using #line-raw("chic-heading-name()") auxiliary function you can give it a try to Hydra for fetching heading names ;).
+]
+
 #heading(level: 2, numbering: none, "Example")
 
 #sourcecode(
