@@ -140,6 +140,8 @@
         rotate(180deg, branch)
       )
     )
+  } else {
+    panic("Invalid styled separator was requested. Possible options are `'double-line'`, `'bold-center'`, `'center-dot'` and `'flower-end'`")
   }
 }
 
@@ -156,22 +158,22 @@
  *        or a `line()` element created by the user
  */
 #let chic-separator(on: "both", outset: 0pt, gutter: .65em, sep) = {
-  if on in ("both", "header", "footer") {
-    if type(sep) == content { // It's a custom separator
-      return (
-        chic-type: "separator",
-        on: on,
-        value: block(width: 100% + (2 * outset), spacing: gutter, sep)
-      )
-    } else if type(sep) == stroke or type(sep) == length { // It's a line stroke
-      return (
-        chic-type: "separator",
-        on: on,
-        value: block(width: 100% + (2 * outset), spacing: gutter, line(length: 100%, stroke: sep))
-      )
-    }
+  assert(on in ("both", "header", "footer"), message: "`on` must receive the strings `'both'`, `'header'` or `'footer'`.")
+  if type(sep) == content { // It's a custom separator
+    return (
+      chic-type: "separator",
+      on: on,
+      value: block(width: 100% + (2 * outset), spacing: gutter, sep)
+    )
+  } else if type(sep) == stroke or type(sep) == length { // It's a line stroke
+    return (
+      chic-type: "separator",
+      on: on,
+      value: block(width: 100% + (2 * outset), spacing: gutter, line(length: 100%, stroke: sep))
+    )
+  } else {
+    panic("Invalid separator was given in `chic-separator()`")
   }
-  // Return nothing if happens a type mismatch
 }
 
 /*
