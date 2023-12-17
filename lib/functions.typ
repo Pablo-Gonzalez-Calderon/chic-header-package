@@ -242,9 +242,8 @@
  *         get a heading in the opposite direction.
  * - level: Up to what level of headings should this function
  *          search
- * - numbered: Whether to show or not the numbering of the headings
  */
-#let chic-heading-name(dir: "next", fill: false, level: 2, numbered: true) = locate(loc => {
+#let chic-heading-name(dir: "next", fill: false, level: 2) = locate(loc => {
   let headings = array(()) // Array for storing headings
 
   // Get all the headings in the given direction
@@ -289,11 +288,7 @@
   }
 
   if found {
-    if numbered and return-heading.numbering != none {
-      return counter(heading).display(return-heading.numbering) + " " +  return-heading.body
-    } else {
-      return return-heading.body
-    }
+    return return-heading.body
   } else {
     return
   }
