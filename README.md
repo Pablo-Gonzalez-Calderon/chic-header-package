@@ -48,7 +48,7 @@ For example, the code below...
 _Note: For a detailed explanation of the functions and parameters, see Chic-header's Manual.pdf._
 
 While using `#show: chic.with()`, you can give the following parameters inside the parenthesis:
-- `width`: Indicates the with of headers and footers in all the document (default is `100%`).
+- `width`: Indicates the width of headers and footers in all the document (default is `100%`).
 - `skip`: Which pages must be skipped for setting its header and footer. Other properties changed with `chic-height()` or `chic-offset()` are preserved. Giving a negative index causes a skip of the last pages using last page as index -1(default is `()`).
 - `even`: Header and footer for even pages. Here, only `chic-header()`, `chic-footer()` and `chic-separator()` functions will take effect. Other functions must be given as an argument of `chic()`.
 - `odd`: Sets the header and footer for odd pages. Here, only `chic-header()`, `chic-footer()` and `chic-separator()` functions will take effect. Other functions must be given as an argument of `chic()`.
