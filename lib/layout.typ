@@ -77,7 +77,7 @@
 
       // Otherwise, just distribute the layout using default fraction values
       } else {
-        chic-layout(left-side, center-side, right-side)
+        chic-distribute-layout(left-side, center-side, right-side)
       }
     },
     column-gutter: 11pt,
