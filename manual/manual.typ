@@ -1,4 +1,4 @@
-#import "@preview/codelst:1.0.0": sourcecode
+#import "@preview/codelst:2.0.2": sourcecode
 #import "template.typ": *
 #import "../chic-hdr.typ": *
 
@@ -18,7 +18,7 @@ Currently, chic-hdr is still on development, and all the code can be found at it
 
 = Usage
 
-To use this package through the Typst package manager (for Typst 0.6.0 or greater), write #line-raw(code: false, "#import \"@preview/chic-hdr:" + chic-version + "\": *") at the beginning of your Typst file.
+To use this package through the Typst package manager (for Typst 0.11.0 or greater), write #line-raw(code: false, "#import \"@preview/chic-hdr:" + chic-version + "\": *") at the beginning of your Typst file.
 
 Once imported, you can start using the package by writing the instruction #line-raw(code: false, "#show: chic.with(...)"), giving the chic-functions inside the parenthesis `()`.
 

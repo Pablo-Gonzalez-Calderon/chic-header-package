@@ -220,10 +220,8 @@
  *
  * Returns the current page number
  */
-#let chic-page-number() = {
-  return locate(loc => {
-    loc.page()
-  })
+#let chic-page-number() = context {
+  here().page()
 }
 
 /*
@@ -243,19 +241,18 @@
  * - level: Up to what level of headings should this function
  *          search
  */
-#let chic-heading-name(dir: "next", fill: false, level: 2) = locate(loc => {
+#let chic-heading-name(dir: "next", fill: false, level: 2) = context {
+  let loc = here()
   let headings = array(()) // Array for storing headings
 
   // Get all the headings in the given direction
   if dir == "next" {
     headings = query(
-      selector(heading).after(loc),
-      loc
+      selector(heading).after(loc)
     ).rev()
   } else if dir == "prev" {
     headings = query(
-      selector(heading).before(loc),
-      loc
+      selector(heading).before(loc)
     )
   }
 
@@ -263,13 +260,11 @@
   if headings.len() == 0 and fill {
     if dir == "next" {
       headings = query(
-        selector(heading).before(loc),
-        loc
+        selector(heading).before(loc)
       )
     } else if dir == "prev" {
       headings = query(
-        selector(heading).after(loc),
-        loc
+        selector(heading).after(loc)
       ).rev()
     }
   }
@@ -292,4 +287,4 @@
   } else {
     return
   }
-})
+}

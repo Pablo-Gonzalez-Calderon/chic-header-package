@@ -1,4 +1,4 @@
-#import "@preview/showybox:2.0.1": *
+#import "@preview/showybox:2.0.3": *
 
 #let chic-version = "0.4.0"
 
