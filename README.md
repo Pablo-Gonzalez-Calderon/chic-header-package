@@ -1,16 +1,16 @@
-# Chic-header (v0.4.0)
+# Chic-header (v0.5.0)
 **Chic-header** (chic-hdr) is a Typst package for creating elegant headers and footers
 
 ## Usage
 
-To use this library through the Typst package manager (for Typst 0.11.0 or greater), write `#import "@preview/chic-hdr:0.4.0": *` at the beginning of your Typst file. Once imported, you can start using the package by writing the instruction `#show: chic.with()` and giving any of the chic functions inside the parenthesis `()`.
+To use this library through the Typst package manager (for Typst 0.6.0 or greater), write `#import "@preview/chic-hdr:0.5.0": *` at the beginning of your Typst file. Once imported, you can start using the package by writing the instruction `#show: chic.with()` and giving any of the chic functions inside the parenthesis `()`.
 
 _**Important: If you are using a custom template that also needs the `#show` instruction to be applied, prefer to use `#show: chic()` after the template's `#show`.**_
 
 For example, the code below...
 
 ```typst
-#import "@preview/chic-hdr:0.4.0": *
+#import "@preview/chic-hdr:0.5.0": *
 
 #set page(paper: "a7")
 
@@ -131,3 +131,10 @@ _Thanks to David (<https://github.com/davidleejy>) for being interested in the p
 - Allow negative indexes for skipping final pages while using `skip`
 - Include some panic alerts for types mismatch
 - Upload manual code in the package repository
+
+
+### Version 0.5.0
+
+_Thanks to PgBiel (<https://github.com/PgBiel>) for contributing to this version._
+
+- Update base code to Typst 0.12.0 standards.
