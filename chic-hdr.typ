@@ -58,18 +58,18 @@
 
   // Load header and footer
   for option in ("header", "footer") {
-    page-options.at(option) = locate(loc => {
+    page-options.at(option) = context {
       // Convert 'skip' negative indexes to positive indexes
       let positive-skip = skip.map((index) => {
         if index >= 0{
           index
         } else {
-          let last-page = counter(page).final(loc).last() + 1
+          let last-page = counter(page).final().last() + 1
           last-page + index
         }
       })
 
-
+      let loc = here()
       if loc.page() not in positive-skip { // Skip given pages
         if calc.odd(loc.page()) { // Odd pages
           if odd != none {
@@ -85,7 +85,7 @@
           }
         }
       }
-    })
+    }
   }
 
   set page(

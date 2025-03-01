@@ -3,7 +3,7 @@
 
 ## Usage
 
-To use this library through the Typst package manager (for Typst 0.6.0 or greater), write `#import "@preview/chic-hdr:0.4.0": *` at the beginning of your Typst file. Once imported, you can start using the package by writing the instruction `#show: chic.with()` and giving any of the chic functions inside the parenthesis `()`.
+To use this library through the Typst package manager (for Typst 0.11.0 or greater), write `#import "@preview/chic-hdr:0.4.0": *` at the beginning of your Typst file. Once imported, you can start using the package by writing the instruction `#show: chic.with()` and giving any of the chic functions inside the parenthesis `()`.
 
 _**Important: If you are using a custom template that also needs the `#show` instruction to be applied, prefer to use `#show: chic()` after the template's `#show`.**_
 

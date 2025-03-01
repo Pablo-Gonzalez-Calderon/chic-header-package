@@ -1,6 +1,7 @@
 [package]
 name = "chic-hdr"
 version = "0.4.0"
+compiler = "0.11.0"
 entrypoint = "chic-hdr.typ"
 authors = ["Pablo González Calderón", "Chic-hdr Contributors"]
 license = "MIT"
